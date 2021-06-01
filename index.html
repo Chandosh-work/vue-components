@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Coponent Fundamentals</title>
+        <link rel="stylesheet" href="main.css"></link>
+    </head>
+    <body>
+       <div id="app">
+        <div>Header</div>
+        <div>Content</div>
+        <plan-picker></plan-picker>
+        <div>Footer</div>
+
+        <slot-example>
+            Banana
+            <template v-slot:description>
+                <!-- use # instead of v-slot: -->
+                Description
+            </template>
+            <template #button-text> 
+                Add
+            </template>
+        </slot-example>
+        <notification-message type="error" header="Error">
+            <p>Please select proper input</p>
+        </notification-message>
+
+        <notification-message type="success" header="Success">
+            <p>Succesfully updated</p>
+        </notification-message>
+ 
+       </div>
+
+       <script type ="text/x-template" id="plan-picker-template">
+        <div>
+            <plan-item v-for="plan of planList"  :name="plan" @select="selectPlan"
+            :selected-plan="selectedPlan"></plan-item>
+        </div>
+       </script>
+
+       <script type="text/x-template" id="plan-template"> 
+        <div class="plan" @click="select" :class="{'selected-plan': isSelected}">
+            <div class="title">
+                {{name}}
+            </div>
+        </div>
+        </script>
+
+        <script type="text/x-template" id="slot-example-template">
+            <div>
+                <input type="checkbox" v-model="checked">
+                <span :class="{'selected': checked}">
+                    <slot></slot>
+                </span>
+                <div>
+                    <slot name="description"> </slot>
+                </div>
+                <button>
+                    <slot name="button-text">
+                        Click Me
+                    </slot> 
+                </button>
+            </div>   
+        </script>
+
+        <script type="text/x-template" id="notification-message-template">
+            <div class="notification-container" :class="{'error': type=='error', 'success': type=='success'}">
+                <div class="header">
+                    <span class="title">{{header}}</span>
+                    <span class="close-icon"> x </span> 
+                </div>
+                <div class="content">
+                    <slot></slot>
+                </div>
+            </div>
+
+
+        </script>
+        
+
+        <script src="https://unpkg.com/vue"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

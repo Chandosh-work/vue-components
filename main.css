@@ -1,0 +1,50 @@
+.plan {
+    background-color: white;
+    height: 50px;
+    max-width: 250px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plan:hover {
+    border: 2px solid green;
+    background-color: lightgreen;
+}
+.title {
+    color: black;
+    font-weight: bold;
+}   
+
+.selected-plan {
+    border: 2px solid green;
+}
+.selected {
+    color: green;
+    font-weight: bold;
+}
+
+.notification-container {
+    min-height: 100px;
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 4px;
+    background-color: lightblue;
+}
+.header {
+ font-weight: bold;   
+ display: flex;
+ justify-content: space-between;
+}
+.close-icon {
+    border: 1px solid grey;
+    border-radius: 51px;
+}
+.error {
+    background-color: lightpink;
+}
+.success {
+    background-color: lightgreen;
+}
